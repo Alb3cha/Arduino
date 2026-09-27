@@ -17,19 +17,69 @@ boardTabs.forEach(tab => {
   });
 });
 
-// Filtro de prácticas por nivel
-const filterButtons = document.querySelectorAll('.filter-btn');
-const practiceCards = document.querySelectorAll('#practicas-grid .practice-card');
+// Progreso del camino de prácticas y retos
+const STORAGE_KEY = 'arduino-taller-progreso';
+const stepCards = Array.from(document.querySelectorAll('.step-card'));
+const totalSteps = stepCards.length;
+const progressFill = document.getElementById('progress-fill');
+const progressLabel = document.getElementById('progress-label');
 
-filterButtons.forEach(btn => {
+function leerProgreso() {
+  const guardado = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+  if (Number.isNaN(guardado) || guardado < 1) return 1;
+  return guardado;
+}
+
+let progreso = leerProgreso();
+
+function aplicarProgreso() {
+  stepCards.forEach(card => {
+    const n = parseInt(card.dataset.step, 10);
+    card.classList.toggle('is-locked', n > progreso);
+    card.classList.toggle('is-current', n === progreso);
+    card.classList.toggle('is-done', n < progreso);
+  });
+
+  const completados = Math.min(progreso - 1, totalSteps);
+  const porcentaje = totalSteps ? Math.round((completados / totalSteps) * 100) : 0;
+  if (progressFill) progressFill.style.width = porcentaje + '%';
+  if (progressLabel) {
+    if (completados >= totalSteps) {
+      progressLabel.textContent = '¡Camino completado! Ya puedes ir al Reto final.';
+    } else {
+      progressLabel.textContent = completados + ' de ' + totalSteps + ' tarjetas completadas';
+    }
+  }
+}
+
+document.querySelectorAll('.mark-done').forEach(btn => {
   btn.addEventListener('click', () => {
-    const level = btn.dataset.filter;
+    const n = parseInt(btn.dataset.step, 10);
+    if (n !== progreso) return;
 
-    filterButtons.forEach(b => b.classList.toggle('is-active', b === btn));
+    progreso = Math.min(n + 1, totalSteps + 1);
+    localStorage.setItem(STORAGE_KEY, progreso);
+    aplicarProgreso();
 
-    practiceCards.forEach(card => {
-      const show = level === 'todas' || card.dataset.level === level;
-      card.style.display = show ? '' : 'none';
-    });
+    const siguiente = document.querySelector('.step-card[data-step="' + progreso + '"]');
+    if (siguiente) {
+      siguiente.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      document.getElementById('reto-final').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
 });
+
+const resetBtn = document.getElementById('reset-progreso');
+if (resetBtn) {
+  resetBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    localStorage.removeItem(STORAGE_KEY);
+    progreso = 1;
+    aplicarProgreso();
+    const primero = document.querySelector('.step-card[data-step="1"]');
+    if (primero) primero.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
+aplicarProgreso();

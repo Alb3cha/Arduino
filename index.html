@@ -22,8 +22,7 @@
   </a>
   <nav class="main-nav">
     <a href="#placas">Placas y pines</a>
-    <a href="#practicas">Prácticas</a>
-    <a href="#retos">Retos</a>
+    <a href="#camino">Prácticas y retos</a>
     <a href="#reto-final">Reto final</a>
   </nav>
 </header>
@@ -36,7 +35,7 @@
       <h1>Monta tu primer circuito. Enciende tu primera línea de código.</h1>
       <p class="hero-lead">Un recorrido práctico con Arduino Uno R3 y R4 WiFi: empezamos por un LED que parpadea y terminamos programando retos que tendrás que resolver por tu cuenta.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#practicas">Empezar por la Práctica 1</a>
+        <a class="btn btn-primary" href="#camino">Empezar por la Práctica 1</a>
         <a class="btn btn-ghost" href="#placas">Ver pines de las placas</a>
       </div>
     </div>
@@ -73,6 +72,21 @@
     </div>
 
     <div class="board-panel is-active" data-board-panel="r3">
+      <svg class="board-illustration" viewBox="0 0 460 220" role="img" aria-label="Esquema de la placa Arduino Uno R3, con conector USB tipo B">
+        <rect x="20" y="20" width="380" height="180" rx="8" class="ill-board"/>
+        <rect x="40" y="10" width="60" height="40" rx="4" class="ill-usb-b"/>
+        <text x="70" y="34" text-anchor="middle" class="ill-usb-label">USB-B</text>
+        <rect x="140" y="70" width="130" height="60" rx="3" class="ill-chip"/>
+        <text x="205" y="105" text-anchor="middle" class="ill-chip-label">ATmega328P</text>
+        <g class="ill-pins">
+          <circle cx="330" cy="60" r="3"/><circle cx="345" cy="60" r="3"/><circle cx="360" cy="60" r="3"/>
+          <circle cx="330" cy="75" r="3"/><circle cx="345" cy="75" r="3"/><circle cx="360" cy="75" r="3"/>
+          <circle cx="330" cy="90" r="3"/><circle cx="345" cy="90" r="3"/><circle cx="360" cy="90" r="3"/>
+        </g>
+        <text x="345" y="45" text-anchor="middle" class="ill-caption">16 MHz</text>
+        <circle cx="60" cy="160" r="6" class="ill-led"/>
+        <text x="60" y="182" text-anchor="middle" class="ill-caption">L</text>
+      </svg>
       <div class="board-grid">
         <div class="board-facts">
           <dl>
@@ -100,6 +114,23 @@
     </div>
 
     <div class="board-panel" data-board-panel="r4">
+      <svg class="board-illustration" viewBox="0 0 460 220" role="img" aria-label="Esquema de la placa Arduino Uno R4 WiFi, con conector USB tipo C, antena WiFi y matriz de LEDs">
+        <rect x="20" y="20" width="380" height="180" rx="8" class="ill-board"/>
+        <rect x="40" y="14" width="56" height="32" rx="6" class="ill-usb-c"/>
+        <text x="68" y="34" text-anchor="middle" class="ill-usb-label">USB-C</text>
+        <rect x="140" y="70" width="130" height="60" rx="3" class="ill-chip"/>
+        <text x="205" y="98" text-anchor="middle" class="ill-chip-label">RA4M1</text>
+        <text x="205" y="114" text-anchor="middle" class="ill-chip-label-sm">48 MHz</text>
+        <path d="M355 45 q10 -18 22 -18" class="ill-antenna"/>
+        <circle cx="377" cy="27" r="3" class="ill-antenna-dot"/>
+        <text x="365" y="60" text-anchor="middle" class="ill-caption">WiFi</text>
+        <g class="ill-matrix">
+          <circle cx="320" cy="150" r="2.2"/><circle cx="330" cy="150" r="2.2"/><circle cx="340" cy="150" r="2.2"/><circle cx="350" cy="150" r="2.2"/>
+          <circle cx="320" cy="160" r="2.2"/><circle cx="330" cy="160" r="2.2"/><circle cx="340" cy="160" r="2.2"/><circle cx="350" cy="160" r="2.2"/>
+          <circle cx="320" cy="170" r="2.2"/><circle cx="330" cy="170" r="2.2"/><circle cx="340" cy="170" r="2.2"/><circle cx="350" cy="170" r="2.2"/>
+        </g>
+        <text x="335" y="188" text-anchor="middle" class="ill-caption">Matriz 12×8</text>
+      </svg>
       <div class="board-grid">
         <div class="board-facts">
           <dl>
@@ -128,30 +159,28 @@
     <p class="board-note">Para las prácticas de este taller da igual qué placa uses: el cableado y el código son los mismos salvo que se indique lo contrario.</p>
   </section>
 
-  <section id="practicas" class="section">
+  <section id="camino" class="section">
     <p class="eyebrow">De lo sencillo a lo complicado</p>
-    <h2>Prácticas guiadas</h2>
-    <p class="section-lead">Cada práctica añade una idea nueva sobre la anterior. Antes de pasar a la siguiente, tu circuito de esta debería funcionar.</p>
+    <h2>Camino de prácticas y retos</h2>
+    <p class="section-lead">Ve completando las tarjetas en orden. Cada una se desbloquea al terminar la anterior — tu progreso se guarda en este mismo navegador, así que puedes cerrar la pestaña y seguir donde lo dejaste.</p>
 
-    <div class="filters" role="group" aria-label="Filtrar prácticas por nivel">
-      <button class="filter-btn is-active" data-filter="todas">Todas</button>
-      <button class="filter-btn" data-filter="iniciacion">Iniciación</button>
-      <button class="filter-btn" data-filter="intermedio">Intermedio</button>
-      <button class="filter-btn" data-filter="avanzado">Avanzado</button>
+    <div class="progress-track">
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <p class="progress-label" id="progress-label"></p>
     </div>
 
-    <div class="card-grid" id="practicas-grid">
+    <div class="step-list" id="step-list">
 
-      <article class="practice-card" data-level="iniciacion">
-        <div class="card-top">
-          <span class="level-tag level-iniciacion">Iniciación</span>
-          <span class="practice-index">Práctica 1</span>
-        </div>
-        <h3>Conexión sencilla de LEDs</h3>
-        <p class="card-summary">Monta tu primer circuito: un LED que se enciende y se apaga desde el código. Es la base de todo lo que viene después.</p>
-
-        <details class="practice-details">
-          <summary>Ver montaje y código</summary>
+      <!-- PASO 1 · Práctica 1 -->
+      <article class="step-card" data-step="1" data-kind="practica">
+        <div class="step-marker"><span class="step-number">1</span><span class="step-lock">🔒</span><span class="step-check">✓</span></div>
+        <div class="step-body">
+          <div class="card-top">
+            <span class="level-tag level-iniciacion">Iniciación</span>
+            <span class="practice-index">Práctica 1</span>
+          </div>
+          <h3>Conexión sencilla de LEDs</h3>
+          <p class="card-summary">Monta tu primer circuito: un LED que se enciende y se apaga desde el código. Es la base de todo lo que viene después.</p>
 
           <h4>Qué vas a aprender</h4>
           <p>Cómo cerrar un circuito con la placa, qué hace una resistencia limitadora y cómo controlar un pin digital con <code>digitalWrite()</code>.</p>
@@ -187,19 +216,61 @@ void loop() {
 
           <h4>Para comprobar que lo entiendes</h4>
           <p>Cambia los valores de <code>delay()</code> y observa qué ocurre. ¿Qué pasa si usas dos valores distintos? ¿Sabrías hacer que el LED parpadee muy deprisa?</p>
-        </details>
+
+          <button class="mark-done" data-step="1">Marcar como completada → siguiente</button>
+        </div>
+        <div class="locked-msg">Termina la tarjeta anterior para desbloquear esta.</div>
       </article>
 
-      <article class="practice-card" data-level="intermedio">
-        <div class="card-top">
-          <span class="level-tag level-intermedio">Intermedio</span>
-          <span class="practice-index">Práctica 2</span>
-        </div>
-        <h3>LED controlado por un pulsador</h3>
-        <p class="card-summary">Añade una entrada a tu circuito: un pulsador que decide, con una condición en el código, si el LED está encendido o apagado.</p>
+      <!-- PASO 2 · Reto 1 -->
+      <article class="step-card" data-step="2" data-kind="reto">
+        <div class="step-marker"><span class="step-number">2</span><span class="step-lock">🔒</span><span class="step-check">✓</span></div>
+        <div class="step-body">
+          <div class="card-top">
+            <span class="level-tag level-reto">Reto 1</span>
+          </div>
+          <h3>El Coche Fantástico</h3>
+          <p class="card-summary">Recrea el barrido de luces del panel frontal de KITT, el coche de la serie <em>El coche fantástico</em>: una luz que recorre una fila de LEDs de un extremo a otro y vuelve, en bucle continuo.</p>
 
-        <details class="practice-details">
-          <summary>Ver montaje y código</summary>
+          <h4>Material disponible</h4>
+          <ul>
+            <li>1 placa Arduino Uno</li>
+            <li>6 LEDs</li>
+            <li>6 resistencias de 220 Ω</li>
+            <li>Cables y protoboard</li>
+          </ul>
+
+          <details class="hint-box">
+            <summary>Pista, si te atascas</summary>
+            <p>Piensa en guardar los números de los pines que uses en un <code>array</code> y recorrerlo con un bucle <code>for</code>. Para que la luz "vuelva" necesitarás recorrer ese array también en sentido inverso.</p>
+          </details>
+
+          <button class="mark-done" data-step="2">Marcar como completado → siguiente</button>
+        </div>
+        <div class="locked-msg">Termina la tarjeta anterior para desbloquear esta.</div>
+      </article>
+
+      <!-- PASO 3 · Práctica 2 -->
+      <article class="step-card" data-step="3" data-kind="practica">
+        <div class="step-marker"><span class="step-number">3</span><span class="step-lock">🔒</span><span class="step-check">✓</span></div>
+        <div class="step-body">
+          <div class="card-top">
+            <span class="level-tag level-intermedio">Intermedio</span>
+            <span class="practice-index">Práctica 2</span>
+          </div>
+          <h3>LED controlado por un pulsador</h3>
+          <p class="card-summary">Añade una entrada a tu circuito: un pulsador que decide, con una condición en el código, si el LED está encendido o apagado.</p>
+
+          <div class="ref-images">
+            <figure>
+              <img src="images/practica2-conexiones.png" alt="Esquema de conexiones de la Práctica 2: pulsador y LED con Arduino Uno" loading="lazy">
+              <figcaption>Esquema de conexiones</figcaption>
+            </figure>
+            <figure>
+              <img src="images/practica2-bloques.png" alt="Código de bloques de la Práctica 2: lectura del pin 8 y control del pin 10" loading="lazy">
+              <figcaption>La misma lógica, en bloques</figcaption>
+            </figure>
+          </div>
 
           <h4>Qué vas a aprender</h4>
           <p>A leer una entrada digital con <code>digitalRead()</code> y a usar una estructura <code>if / else</code> para que el circuito reaccione a lo que ocurre fuera de la placa.</p>
@@ -243,19 +314,65 @@ void loop() {
           <h4>Antes del próximo reto: el LED tricolor (RGB)</h4>
           <p>Un LED tricolor no tiene 2 patas, sino 4: tres corresponden a los colores rojo, verde y azul, y la cuarta es una pata común. Según el modelo, esa pata común se conecta a <strong>GND</strong> (cátodo común, el más habitual en kits escolares) o a <strong>5V</strong> (ánodo común) — comprueba el datasheet del tuyo antes de montarlo.</p>
           <p>Cada uno de los tres colores necesita su propia resistencia de 220 Ω y su propio pin. Si usas <code>digitalWrite()</code> el color enciende a máxima intensidad; si usas <code>analogWrite()</code> en un pin PWM puedes regular la intensidad de cada color y mezclarlos.</p>
-        </details>
+
+          <button class="mark-done" data-step="3">Marcar como completada → siguiente</button>
+        </div>
+        <div class="locked-msg">Termina la tarjeta anterior para desbloquear esta.</div>
       </article>
 
-      <article class="practice-card" data-level="avanzado">
-        <div class="card-top">
-          <span class="level-tag level-avanzado">Avanzado</span>
-          <span class="practice-index">Práctica 3</span>
-        </div>
-        <h3>Sensor de luz (LDR) y un LED</h3>
-        <p class="card-summary">Sustituye el pulsador por un sensor: una fotorresistencia (LDR) que decide, según la luz ambiente, si el LED debe encenderse.</p>
+      <!-- PASO 4 · Reto 2 -->
+      <article class="step-card" data-step="4" data-kind="reto">
+        <div class="step-marker"><span class="step-number">4</span><span class="step-lock">🔒</span><span class="step-check">✓</span></div>
+        <div class="step-body">
+          <div class="card-top">
+            <span class="level-tag level-reto">Reto 2</span>
+          </div>
+          <h3>Un pulsador, tres colores</h3>
+          <p class="card-summary">Usa un único pulsador para ir cambiando el color de un LED tricolor: rojo, luego verde, luego azul, y vuelta a empezar cada vez que lo pulsas.</p>
 
-        <details class="practice-details">
-          <summary>Ver montaje y código</summary>
+          <h4>Material disponible</h4>
+          <ul>
+            <li>1 placa Arduino Uno</li>
+            <li>1 LED tricolor (cátodo común)</li>
+            <li>3 resistencias de 220 Ω</li>
+            <li>1 pulsador</li>
+            <li>1 resistencia de 10 kΩ</li>
+            <li>Cables y protoboard</li>
+          </ul>
+
+          <p>Cuidado: si en cada vuelta del <code>loop()</code> compruebas si el botón está pulsado y cambias de color cuando lo está, el color cambiará decenas de veces mientras lo mantengas apretado, porque el <code>loop()</code> se ejecuta miles de veces por segundo.</p>
+
+          <details class="hint-box">
+            <summary>Pista, si te atascas</summary>
+            <p>Lo que quieres detectar no es "el botón está pulsado", sino el instante en que <em>pasa</em> de no estarlo a estarlo (un "flanco de subida"). Guarda en una variable el estado del botón en la vuelta anterior del <code>loop()</code> y compáralo con el estado actual: solo cambia de color cuando antes era LOW y ahora es HIGH.</p>
+          </details>
+
+          <button class="mark-done" data-step="4">Marcar como completado → siguiente</button>
+        </div>
+        <div class="locked-msg">Termina la tarjeta anterior para desbloquear esta.</div>
+      </article>
+
+      <!-- PASO 5 · Práctica 3 -->
+      <article class="step-card" data-step="5" data-kind="practica">
+        <div class="step-marker"><span class="step-number">5</span><span class="step-lock">🔒</span><span class="step-check">✓</span></div>
+        <div class="step-body">
+          <div class="card-top">
+            <span class="level-tag level-avanzado">Avanzado</span>
+            <span class="practice-index">Práctica 3</span>
+          </div>
+          <h3>Sensor de luz (LDR) y un LED</h3>
+          <p class="card-summary">Sustituye el pulsador por un sensor: una fotorresistencia (LDR) que decide, según la luz ambiente, si el LED debe encenderse.</p>
+
+          <div class="ref-images">
+            <figure>
+              <img src="images/practica3-conexiones.png" alt="Esquema de conexiones de la Práctica 3: LDR y LED con Arduino Uno" loading="lazy">
+              <figcaption>Esquema de conexiones</figcaption>
+            </figure>
+            <figure>
+              <img src="images/practica3-bloques.png" alt="Código de bloques de la Práctica 3: lectura del LDR en A0 y control del pin 13" loading="lazy">
+              <figcaption>La misma lógica, en bloques</figcaption>
+            </figure>
+          </div>
 
           <h4>Qué vas a aprender</h4>
           <p>A leer una entrada <strong>analógica</strong> con <code>analogRead()</code> (valores de 0 a 1023, no solo 0 o 1) y a comparar esa lectura con un umbral para tomar una decisión.</p>
@@ -297,19 +414,63 @@ void loop() {
   }
 }</code></pre>
           <p>El valor 300 es un umbral orientativo: abre el monitor serie, imprime <code>valor</code> con <code>Serial.println()</code> y comprueba qué número da tu LDR con la luz de tu aula, para ajustarlo si hace falta.</p>
-        </details>
+
+          <button class="mark-done" data-step="5">Marcar como completada → siguiente</button>
+        </div>
+        <div class="locked-msg">Termina la tarjeta anterior para desbloquear esta.</div>
       </article>
 
-      <article class="practice-card" data-level="avanzado">
-        <div class="card-top">
-          <span class="level-tag level-avanzado">Avanzado</span>
-          <span class="practice-index">Práctica 4</span>
-        </div>
-        <h3>Servomotor</h3>
-        <p class="card-summary">Deja de encender luces y empieza a mover algo: controla el ángulo de un servomotor con la librería <code>Servo</code>.</p>
+      <!-- PASO 6 · Reto 3 -->
+      <article class="step-card" data-step="6" data-kind="reto">
+        <div class="step-marker"><span class="step-number">6</span><span class="step-lock">🔒</span><span class="step-check">✓</span></div>
+        <div class="step-body">
+          <div class="card-top">
+            <span class="level-tag level-reto">Reto 3</span>
+          </div>
+          <h3>Semáforo de luz ambiente</h3>
+          <p class="card-summary">Añade un segundo LED a la Práctica 3: el LED verde se enciende cuando el LDR detecta luz, y el LED rojo se enciende cuando no la detecta. Nunca deben estar encendidos los dos a la vez.</p>
 
-        <details class="practice-details">
-          <summary>Ver montaje y código</summary>
+          <h4>Material disponible</h4>
+          <ul>
+            <li>1 placa Arduino Uno</li>
+            <li>1 LDR</li>
+            <li>1 resistencia de 10 kΩ</li>
+            <li>1 LED verde y 1 LED rojo</li>
+            <li>2 resistencias de 220 Ω</li>
+            <li>Cables y protoboard</li>
+          </ul>
+
+          <details class="hint-box">
+            <summary>Pista, si te atascas</summary>
+            <p>No necesitas dos condiciones <code>if</code> independientes: con una sola comparación ya sabes el estado de los dos LEDs a la vez. Piensa en la Práctica 3 y en qué pin debería quedar como estaba y cuál debería invertirse.</p>
+          </details>
+
+          <button class="mark-done" data-step="6">Marcar como completado → siguiente</button>
+        </div>
+        <div class="locked-msg">Termina la tarjeta anterior para desbloquear esta.</div>
+      </article>
+
+      <!-- PASO 7 · Práctica 4 -->
+      <article class="step-card" data-step="7" data-kind="practica">
+        <div class="step-marker"><span class="step-number">7</span><span class="step-lock">🔒</span><span class="step-check">✓</span></div>
+        <div class="step-body">
+          <div class="card-top">
+            <span class="level-tag level-avanzado">Avanzado</span>
+            <span class="practice-index">Práctica 4</span>
+          </div>
+          <h3>Servomotor</h3>
+          <p class="card-summary">Deja de encender luces y empieza a mover algo: controla el ángulo de un servomotor con la librería <code>Servo</code>.</p>
+
+          <div class="ref-images">
+            <figure>
+              <img src="images/practica4-conexiones.png" alt="Esquema de conexiones de la Práctica 4: servomotor con Arduino Uno" loading="lazy">
+              <figcaption>Esquema de conexiones</figcaption>
+            </figure>
+            <figure>
+              <img src="images/practica4-bloques.png" alt="Código de bloques de la Práctica 4: giro del servo en el pin 8" loading="lazy">
+              <figcaption>La misma lógica, en bloques</figcaption>
+            </figure>
+          </div>
 
           <h4>Qué vas a aprender</h4>
           <p>A usar una <strong>librería</strong> (código que ya han escrito otros para resolver un problema común) y a mover un servomotor a un ángulo concreto con <code>write()</code>.</p>
@@ -345,19 +506,62 @@ void loop() {
   delay(2000);
 }</code></pre>
           <p>La librería <code>Servo</code> viene instalada por defecto en el IDE de Arduino: solo hace falta el <code>#include</code>, no necesitas descargar nada.</p>
-        </details>
+
+          <button class="mark-done" data-step="7">Marcar como completada → siguiente</button>
+        </div>
+        <div class="locked-msg">Termina la tarjeta anterior para desbloquear esta.</div>
       </article>
 
-      <article class="practice-card" data-level="avanzado">
-        <div class="card-top">
-          <span class="level-tag level-avanzado">Avanzado</span>
-          <span class="practice-index">Práctica 6</span>
-        </div>
-        <h3>Sensor de temperatura y monitor serie</h3>
-        <p class="card-summary">Lee un sensor de temperatura, conviértelo a grados y observa los datos en tiempo real desde el ordenador con el monitor serie.</p>
+      <!-- PASO 8 · Reto 4 -->
+      <article class="step-card" data-step="8" data-kind="reto">
+        <div class="step-marker"><span class="step-number">8</span><span class="step-lock">🔒</span><span class="step-check">✓</span></div>
+        <div class="step-body">
+          <div class="card-top">
+            <span class="level-tag level-reto">Reto 4</span>
+          </div>
+          <h3>Una puerta que reacciona a la luz</h3>
+          <p class="card-summary">Combina la Práctica 3 y la Práctica 4: cuando el LDR detecte luz, el servo debe moverse a una posición; cuando deje de detectarla, debe volver a la posición inicial.</p>
 
-        <details class="practice-details">
-          <summary>Ver montaje y código</summary>
+          <h4>Material disponible</h4>
+          <ul>
+            <li>1 placa Arduino Uno</li>
+            <li>1 LDR</li>
+            <li>1 resistencia de 10 kΩ</li>
+            <li>1 servomotor</li>
+            <li>Cables y protoboard</li>
+          </ul>
+
+          <details class="hint-box">
+            <summary>Pista, si te atascas</summary>
+            <p>Si simplemente sustituyes los <code>digitalWrite()</code> del Reto 3 por <code>miServo.write()</code> dentro del mismo <code>if</code>, el servo recibirá la misma orden decenas de veces por segundo y puede vibrar o hacer ruido. Guarda el estado anterior (con luz / sin luz) en una variable y mueve el servo solo en el instante en que ese estado cambia, igual que hiciste con el flanco del pulsador en el Reto 2.</p>
+          </details>
+
+          <button class="mark-done" data-step="8">Marcar como completado → siguiente</button>
+        </div>
+        <div class="locked-msg">Termina la tarjeta anterior para desbloquear esta.</div>
+      </article>
+
+      <!-- PASO 9 · Práctica 5 -->
+      <article class="step-card" data-step="9" data-kind="practica">
+        <div class="step-marker"><span class="step-number">9</span><span class="step-lock">🔒</span><span class="step-check">✓</span></div>
+        <div class="step-body">
+          <div class="card-top">
+            <span class="level-tag level-avanzado">Avanzado</span>
+            <span class="practice-index">Práctica 5</span>
+          </div>
+          <h3>Sensor de temperatura y monitor serie</h3>
+          <p class="card-summary">Lee un sensor de temperatura, conviértelo a grados y observa los datos en tiempo real desde el ordenador con el monitor serie.</p>
+
+          <div class="ref-images">
+            <figure>
+              <img src="images/practica5-conexiones.png" alt="Esquema de conexiones de la Práctica 5: sensor de temperatura y LED con Arduino Uno" loading="lazy">
+              <figcaption>Esquema de conexiones</figcaption>
+            </figure>
+            <figure>
+              <img src="images/practica5-bloques.png" alt="Código de bloques de la Práctica 5: lectura del sensor de temperatura en A0 y control del pin 7" loading="lazy">
+              <figcaption>La misma lógica, en bloques</figcaption>
+            </figure>
+          </div>
 
           <h4>Qué vas a aprender</h4>
           <p>A convertir una lectura analógica en una magnitud con sentido (grados centígrados) y a usar <code>Serial.print()</code> para ver esos datos en el ordenador mientras el programa se ejecuta.</p>
@@ -405,19 +609,62 @@ void loop() {
   delay(500);
 }</code></pre>
           <p>Abre el monitor serie (icono de la lupa arriba a la derecha del IDE, o <code>Herramientas → Monitor Serie</code>) y comprueba que la velocidad indicada coincide con el <code>9600</code> de <code>Serial.begin()</code>. Calienta el sensor con los dedos para ver cómo cambia la lectura.</p>
-        </details>
+
+          <button class="mark-done" data-step="9">Marcar como completada → siguiente</button>
+        </div>
+        <div class="locked-msg">Termina la tarjeta anterior para desbloquear esta.</div>
       </article>
 
-      <article class="practice-card" data-level="avanzado">
-        <div class="card-top">
-          <span class="level-tag level-avanzado">Avanzado</span>
-          <span class="practice-index">Práctica 7</span>
-        </div>
-        <h3>Sensor de ultrasonidos y dos LEDs</h3>
-        <p class="card-summary">Mide una distancia con un sensor de ultrasonidos de un solo pin de señal (tipo PING))) y enciende un LED distinto según si algo está cerca o lejos.</p>
+      <!-- PASO 10 · Reto 5 -->
+      <article class="step-card" data-step="10" data-kind="reto">
+        <div class="step-marker"><span class="step-number">10</span><span class="step-lock">🔒</span><span class="step-check">✓</span></div>
+        <div class="step-body">
+          <div class="card-top">
+            <span class="level-tag level-reto">Reto 5</span>
+          </div>
+          <h3>Frío, templado o calor</h3>
+          <p class="card-summary">Amplía la Práctica 5 con dos LEDs: uno azul que se encienda cuando la temperatura sea fría, y uno rojo que se encienda cuando sea cálida.</p>
 
-        <details class="practice-details">
-          <summary>Ver montaje y código</summary>
+          <h4>Material disponible</h4>
+          <ul>
+            <li>1 placa Arduino Uno</li>
+            <li>1 sensor de temperatura analógico</li>
+            <li>1 LED azul y 1 LED rojo</li>
+            <li>2 resistencias de 220 Ω</li>
+            <li>Cables y protoboard</li>
+          </ul>
+
+          <details class="hint-box">
+            <summary>Pista, si te atascas</summary>
+            <p>Necesitas dos umbrales, no uno: uno para decidir "frío" y otro para decidir "calor". Entre ambos hay un rango templado en el que ningún LED debería encenderse — piensa qué pasa con tu código si defines mal esos dos límites y se solapan.</p>
+          </details>
+
+          <button class="mark-done" data-step="10">Marcar como completado → siguiente</button>
+        </div>
+        <div class="locked-msg">Termina la tarjeta anterior para desbloquear esta.</div>
+      </article>
+
+      <!-- PASO 11 · Práctica 6 -->
+      <article class="step-card" data-step="11" data-kind="practica">
+        <div class="step-marker"><span class="step-number">11</span><span class="step-lock">🔒</span><span class="step-check">✓</span></div>
+        <div class="step-body">
+          <div class="card-top">
+            <span class="level-tag level-avanzado">Avanzado</span>
+            <span class="practice-index">Práctica 6</span>
+          </div>
+          <h3>Sensor de ultrasonidos y dos LEDs</h3>
+          <p class="card-summary">Mide una distancia con un sensor de ultrasonidos de un solo pin de señal (tipo PING))) y enciende un LED distinto según si algo está cerca o lejos.</p>
+
+          <div class="ref-images">
+            <figure>
+              <img src="images/practica6-conexiones.png" alt="Esquema de conexiones de la Práctica 6: sensor de ultrasonidos y dos LEDs con Arduino Uno" loading="lazy">
+              <figcaption>Esquema de conexiones</figcaption>
+            </figure>
+            <figure>
+              <img src="images/practica6-bloques.png" alt="Código de bloques de la Práctica 6: lectura del sensor de ultrasonidos y control de los pines 2 y 7" loading="lazy">
+              <figcaption>La misma lógica, en bloques</figcaption>
+            </figure>
+          </div>
 
           <h4>Qué vas a aprender</h4>
           <p>Cómo funciona un sensor de ultrasonidos por debajo: envía un pulso, cronometra cuánto tarda en volver el eco con <code>pulseIn()</code> y, a partir de ese tiempo, calcula una distancia.</p>
@@ -478,153 +725,40 @@ void loop() {
   delay(200);
 }</code></pre>
           <p>El mismo pin hace de "altavoz" (envía el pulso, en modo <code>OUTPUT</code>) y de "oído" (escucha el eco, en modo <code>INPUT</code>) en momentos distintos: por eso cambiamos su <code>pinMode()</code> dos veces dentro del mismo <code>loop()</code>.</p>
-        </details>
+
+          <button class="mark-done" data-step="11">Marcar como completada → siguiente</button>
+        </div>
+        <div class="locked-msg">Termina la tarjeta anterior para desbloquear esta.</div>
       </article>
 
-    </div>
-  </section>
+      <!-- PASO 12 · Reto 6 -->
+      <article class="step-card" data-step="12" data-kind="reto">
+        <div class="step-marker"><span class="step-number">12</span><span class="step-lock">🔒</span><span class="step-check">✓</span></div>
+        <div class="step-body">
+          <div class="card-top">
+            <span class="level-tag level-reto">Reto 6</span>
+          </div>
+          <h3>Un guardián con brazo</h3>
+          <p class="card-summary">Añade un servomotor a la Práctica 6: debe moverse a la vez que cambian los LEDs, a una posición cuando algo está cerca y a otra cuando está lejos.</p>
 
-  <section id="retos" class="section">
-    <p class="eyebrow">Menos guía, más criterio propio</p>
-    <h2>Retos</h2>
-    <p class="section-lead">Un reto no trae montaje paso a paso ni código. Tienes el objetivo y el material: el resto lo decides tú, aplicando lo que ya sabes de las prácticas anteriores.</p>
+          <h4>Material disponible</h4>
+          <ul>
+            <li>1 placa Arduino Uno</li>
+            <li>1 sensor de ultrasonidos</li>
+            <li>1 LED rojo y 1 LED verde</li>
+            <li>2 resistencias de 220 Ω</li>
+            <li>1 servomotor</li>
+            <li>Cables y protoboard</li>
+          </ul>
 
-    <div class="card-grid" id="retos-grid">
+          <details class="hint-box">
+            <summary>Pista, si te atascas</summary>
+            <p>Ya resolviste este mismo problema en el Reto 4: mover un servo dentro de un <code>if</code> que se ejecuta continuamente lo hace vibrar. Guarda si la última posición fue "cerca" o "lejos" en una variable y ordena al servo moverse solo cuando ese estado cambia respecto a la vuelta anterior del <code>loop()</code>.</p>
+          </details>
 
-      <article class="challenge-card">
-        <div class="card-top">
-          <span class="level-tag level-reto">Reto 1</span>
+          <button class="mark-done" data-step="12">Marcar como completado</button>
         </div>
-        <h3>El Coche Fantástico</h3>
-        <p class="card-summary">Recrea el barrido de luces del panel frontal de KITT, el coche de la serie <em>El coche fantástico</em>: una luz que recorre una fila de LEDs de un extremo a otro y vuelve, en bucle continuo.</p>
-
-        <h4>Material disponible</h4>
-        <ul>
-          <li>1 placa Arduino Uno</li>
-          <li>6 LEDs</li>
-          <li>6 resistencias de 220 Ω</li>
-          <li>Cables y protoboard</li>
-        </ul>
-
-        <details class="hint-box">
-          <summary>Pista, si te atascas</summary>
-          <p>Piensa en guardar los números de los pines que uses en un <code>array</code> y recorrerlo con un bucle <code>for</code>. Para que la luz "vuelva" necesitarás recorrer ese array también en sentido inverso.</p>
-        </details>
-      </article>
-
-      <article class="challenge-card">
-        <div class="card-top">
-          <span class="level-tag level-reto">Reto 2</span>
-        </div>
-        <h3>Un pulsador, tres colores</h3>
-        <p class="card-summary">Usa un único pulsador para ir cambiando el color de un LED tricolor: rojo, luego verde, luego azul, y vuelta a empezar cada vez que lo pulsas.</p>
-
-        <h4>Material disponible</h4>
-        <ul>
-          <li>1 placa Arduino Uno</li>
-          <li>1 LED tricolor (cátodo común)</li>
-          <li>3 resistencias de 220 Ω</li>
-          <li>1 pulsador</li>
-          <li>1 resistencia de 10 kΩ</li>
-          <li>Cables y protoboard</li>
-        </ul>
-
-        <p>Cuidado: si en cada vuelta del <code>loop()</code> compruebas si el botón está pulsado y cambias de color cuando lo está, el color cambiará decenas de veces mientras lo mantengas apretado, porque el <code>loop()</code> se ejecuta miles de veces por segundo.</p>
-
-        <details class="hint-box">
-          <summary>Pista, si te atascas</summary>
-          <p>Lo que quieres detectar no es "el botón está pulsado", sino el instante en que <em>pasa</em> de no estarlo a estarlo (un "flanco de subida"). Guarda en una variable el estado del botón en la vuelta anterior del <code>loop()</code> y compáralo con el estado actual: solo cambia de color cuando antes era LOW y ahora es HIGH.</p>
-        </details>
-      </article>
-
-      <article class="challenge-card">
-        <div class="card-top">
-          <span class="level-tag level-reto">Reto 3</span>
-        </div>
-        <h3>Semáforo de luz ambiente</h3>
-        <p class="card-summary">Añade un segundo LED a la Práctica 3: el LED verde se enciende cuando el LDR detecta luz, y el LED rojo se enciende cuando no la detecta. Nunca deben estar encendidos los dos a la vez.</p>
-
-        <h4>Material disponible</h4>
-        <ul>
-          <li>1 placa Arduino Uno</li>
-          <li>1 LDR</li>
-          <li>1 resistencia de 10 kΩ</li>
-          <li>1 LED verde y 1 LED rojo</li>
-          <li>2 resistencias de 220 Ω</li>
-          <li>Cables y protoboard</li>
-        </ul>
-
-        <details class="hint-box">
-          <summary>Pista, si te atascas</summary>
-          <p>No necesitas dos condiciones <code>if</code> independientes: con una sola comparación ya sabes el estado de los dos LEDs a la vez. Piensa en la Práctica 3 y en qué pin debería quedar como estaba y cuál debería invertirse.</p>
-        </details>
-      </article>
-
-      <article class="challenge-card">
-        <div class="card-top">
-          <span class="level-tag level-reto">Reto 4</span>
-        </div>
-        <h3>Una puerta que reacciona a la luz</h3>
-        <p class="card-summary">Combina la Práctica 3 y la Práctica 4: cuando el LDR detecte luz, el servo debe moverse a una posición; cuando deje de detectarla, debe volver a la posición inicial.</p>
-
-        <h4>Material disponible</h4>
-        <ul>
-          <li>1 placa Arduino Uno</li>
-          <li>1 LDR</li>
-          <li>1 resistencia de 10 kΩ</li>
-          <li>1 servomotor</li>
-          <li>Cables y protoboard</li>
-        </ul>
-
-        <details class="hint-box">
-          <summary>Pista, si te atascas</summary>
-          <p>Si simplemente sustituyes los <code>digitalWrite()</code> del Reto 3 por <code>miServo.write()</code> dentro del mismo <code>if</code>, el servo recibirá la misma orden decenas de veces por segundo y puede vibrar o hacer ruido. Guarda el estado anterior (con luz / sin luz) en una variable y mueve el servo solo en el instante en que ese estado cambia, igual que hiciste con el flanco del pulsador en el Reto 2.</p>
-        </details>
-      </article>
-
-      <article class="challenge-card">
-        <div class="card-top">
-          <span class="level-tag level-reto">Reto 6</span>
-        </div>
-        <h3>Frío, templado o calor</h3>
-        <p class="card-summary">Amplía la Práctica 6 con dos LEDs: uno azul que se encienda cuando la temperatura sea fría, y uno rojo que se encienda cuando sea cálida.</p>
-
-        <h4>Material disponible</h4>
-        <ul>
-          <li>1 placa Arduino Uno</li>
-          <li>1 sensor de temperatura analógico</li>
-          <li>1 LED azul y 1 LED rojo</li>
-          <li>2 resistencias de 220 Ω</li>
-          <li>Cables y protoboard</li>
-        </ul>
-
-        <details class="hint-box">
-          <summary>Pista, si te atascas</summary>
-          <p>Necesitas dos umbrales, no uno: uno para decidir "frío" y otro para decidir "calor". Entre ambos hay un rango templado en el que ningún LED debería encenderse — piensa qué pasa con tu código si defines mal esos dos límites y se solapan.</p>
-        </details>
-      </article>
-
-      <article class="challenge-card">
-        <div class="card-top">
-          <span class="level-tag level-reto">Reto 7</span>
-        </div>
-        <h3>Un guardián con brazo</h3>
-        <p class="card-summary">Añade un servomotor a la Práctica 7: debe moverse a la vez que cambian los LEDs, a una posición cuando algo está cerca y a otra cuando está lejos.</p>
-
-        <h4>Material disponible</h4>
-        <ul>
-          <li>1 placa Arduino Uno</li>
-          <li>1 sensor de ultrasonidos</li>
-          <li>1 LED rojo y 1 LED verde</li>
-          <li>2 resistencias de 220 Ω</li>
-          <li>1 servomotor</li>
-          <li>Cables y protoboard</li>
-        </ul>
-
-        <details class="hint-box">
-          <summary>Pista, si te atascas</summary>
-          <p>Ya resolviste este mismo problema en el Reto 4: mover un servo dentro de un <code>if</code> que se ejecuta continuamente lo hace vibrar. Guarda si la última posición fue "cerca" o "lejos" en una variable y ordena al servo moverse solo cuando ese estado cambia respecto a la vuelta anterior del <code>loop()</code>.</p>
-        </details>
+        <div class="locked-msg">Termina la tarjeta anterior para desbloquear esta.</div>
       </article>
 
     </div>
@@ -665,8 +799,8 @@ void loop() {
 </main>
 
 <footer class="site-footer">
-  <p>Taller de Arduino · Material de aula. Ve probando cada práctica en orden.</p>
-  <a href="#inicio">Volver arriba ↑</a>
+  <p>Taller de Arduino · Material de aula. Ve completando cada tarjeta en orden.</p>
+  <a href="#" id="reset-progreso">Reiniciar progreso ↺</a>
 </footer>
 
 <script src="script.js"></script>

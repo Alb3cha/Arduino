@@ -265,53 +265,182 @@ td p { margin: 0; }
 
 .board-note { margin-top: 1.4rem; font-size: 0.92rem; }
 
-/* ---------- Filters ---------- */
+/* ---------- Ilustraciones de placa ---------- */
 
-.filters {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
+.board-illustration {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  display: block;
 }
-.filter-btn {
-  font-family: var(--sans);
-  font-size: 0.88rem;
-  padding: 0.5em 1em;
+.ill-board { fill: var(--bg-panel-raised); stroke: var(--line-strong); }
+.ill-usb-b, .ill-usb-c { fill: #33455C; stroke: var(--text-faint); }
+.ill-usb-label, .ill-caption { font-family: var(--mono); font-size: 10px; fill: var(--text-faint); }
+.ill-chip { fill: #171717; stroke: var(--line-strong); }
+.ill-chip-label { font-family: var(--mono); font-size: 11px; fill: var(--text-dim); }
+.ill-chip-label-sm { font-family: var(--mono); font-size: 9px; fill: var(--text-faint); }
+.ill-pins circle { fill: var(--text-faint); }
+.ill-led { fill: var(--copper-light); }
+.ill-antenna { fill: none; stroke: var(--copper-light); stroke-width: 1.6; }
+.ill-antenna-dot { fill: var(--copper-light); }
+.ill-matrix circle { fill: var(--copper-light); opacity: 0.85; }
+
+/* ---------- Progreso ---------- */
+
+.progress-track { margin-bottom: 2.5rem; }
+.progress-bar {
+  height: 6px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
   border-radius: 20px;
-  border: 1px solid var(--line-strong);
-  background: transparent;
-  color: var(--text-dim);
-  cursor: pointer;
+  overflow: hidden;
 }
-.filter-btn.is-active {
+.progress-fill {
+  height: 100%;
+  width: 0%;
   background: var(--copper);
-  border-color: var(--copper);
-  color: #0F1D17;
+  transition: width 0.3s ease;
+}
+.progress-label {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  margin: 0.6em 0 0;
 }
 
-/* ---------- Cards ---------- */
+/* ---------- Camino de pasos ---------- */
 
-.card-grid {
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  max-width: 760px;
+}
+
+.step-card {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
-}
-
-.practice-card, .challenge-card {
+  grid-template-columns: 44px 1fr;
+  gap: 1.2rem;
   background: var(--bg-panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 1.6rem;
 }
 
-.practice-placeholder { opacity: 0.5; }
-.practice-placeholder h3, .practice-placeholder p { color: var(--text-faint); }
+.step-card[data-kind="reto"] { border-left: 3px solid var(--copper); }
+
+.step-marker {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0.2rem;
+}
+.step-number {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-lock, .step-check { display: none; font-size: 0.95rem; }
+
+.step-card.is-current .step-number { border-color: var(--copper); color: var(--copper-light); }
+
+.step-card.is-done .step-number { display: none; }
+.step-card.is-done .step-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(127,184,138,0.18);
+  color: var(--success);
+}
+.step-card.is-done .mark-done { display: none; }
+
+.step-card.is-locked {
+  padding: 1.1rem 1.6rem;
+  background: transparent;
+}
+.step-card.is-locked .step-number { display: none; }
+.step-card.is-locked .step-lock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  opacity: 0.6;
+}
+.step-card.is-locked .step-body { display: none; }
+.step-card.is-locked .locked-msg {
+  display: flex;
+  align-items: center;
+  color: var(--text-faint);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.locked-msg { display: none; }
+
+.mark-done {
+  margin-top: 1.6rem;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.7em 1.3em;
+  border-radius: var(--radius);
+  border: 1px solid var(--copper);
+  background: transparent;
+  color: var(--copper-light);
+  cursor: pointer;
+}
+.mark-done:hover { background: var(--copper); color: #0F1D17; }
+
+/* ---------- Imágenes de referencia dentro de una tarjeta ---------- */
+
+.ref-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.2rem 0 1.6rem;
+}
+.ref-images figure { margin: 0; }
+.ref-images img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+.ref-images figcaption {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--text-faint);
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .ref-images { grid-template-columns: 1fr; }
+  .step-card { grid-template-columns: 32px 1fr; padding: 1.2rem; gap: 0.8rem; }
+}
+
+/* ---------- Tarjetas de práctica / reto (contenido interno) ---------- */
 
 .card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.9rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .practice-index {
@@ -331,31 +460,29 @@ td p { margin: 0; }
 .level-avanzado { background: rgba(214,105,105,0.16); color: #E08787; }
 .level-reto { background: rgba(200,129,63,0.18); color: var(--copper-light); }
 
-.practice-card h3, .challenge-card h3 { font-size: 1.15rem; margin-bottom: 0.4em; }
-.card-summary { font-size: 0.94rem; margin-bottom: 0; }
+.step-body h3 { font-size: 1.25rem; margin-bottom: 0.4em; }
+.card-summary { font-size: 0.96rem; }
 
-.practice-details, .hint-box {
-  margin-top: 1.2rem;
-  border-top: 1px solid var(--line);
-  padding-top: 1rem;
-}
-.practice-details summary, .hint-box summary {
-  cursor: pointer;
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  color: var(--copper-light);
-}
-.practice-details h4, .challenge-card h4 {
+.step-body h4 {
   font-family: var(--sans);
   font-size: 0.85rem;
   color: var(--text-faint);
   margin: 1.2em 0 0.4em;
 }
-.practice-details ul, .practice-details ol,
-.challenge-card ul { margin: 0 0 1em; padding-left: 1.2em; color: var(--text-dim); font-size: 0.94rem; }
-.practice-details li, .challenge-card li { margin-bottom: 0.3em; }
+.step-body ul, .step-body ol { margin: 0 0 1em; padding-left: 1.2em; color: var(--text-dim); font-size: 0.94rem; }
+.step-body li { margin-bottom: 0.3em; }
 
-.hint-box { margin-top: 1rem; }
+.hint-box {
+  margin-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+.hint-box summary {
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--copper-light);
+}
 .hint-box p { font-size: 0.92rem; margin-top: 0.6em; }
 
 /* ---------- Reto final ---------- */
