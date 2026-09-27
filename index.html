@@ -72,21 +72,7 @@
     </div>
 
     <div class="board-panel is-active" data-board-panel="r3">
-      <svg class="board-illustration" viewBox="0 0 460 220" role="img" aria-label="Esquema de la placa Arduino Uno R3, con conector USB tipo B">
-        <rect x="20" y="20" width="380" height="180" rx="8" class="ill-board"/>
-        <rect x="40" y="10" width="60" height="40" rx="4" class="ill-usb-b"/>
-        <text x="70" y="34" text-anchor="middle" class="ill-usb-label">USB-B</text>
-        <rect x="140" y="70" width="130" height="60" rx="3" class="ill-chip"/>
-        <text x="205" y="105" text-anchor="middle" class="ill-chip-label">ATmega328P</text>
-        <g class="ill-pins">
-          <circle cx="330" cy="60" r="3"/><circle cx="345" cy="60" r="3"/><circle cx="360" cy="60" r="3"/>
-          <circle cx="330" cy="75" r="3"/><circle cx="345" cy="75" r="3"/><circle cx="360" cy="75" r="3"/>
-          <circle cx="330" cy="90" r="3"/><circle cx="345" cy="90" r="3"/><circle cx="360" cy="90" r="3"/>
-        </g>
-        <text x="345" y="45" text-anchor="middle" class="ill-caption">16 MHz</text>
-        <circle cx="60" cy="160" r="6" class="ill-led"/>
-        <text x="60" y="182" text-anchor="middle" class="ill-caption">L</text>
-      </svg>
+      <img class="board-photo" src="images/board-r3.png" alt="Foto real de la placa Arduino Uno R3, vista desde arriba">
       <div class="board-grid">
         <div class="board-facts">
           <dl>
@@ -114,23 +100,7 @@
     </div>
 
     <div class="board-panel" data-board-panel="r4">
-      <svg class="board-illustration" viewBox="0 0 460 220" role="img" aria-label="Esquema de la placa Arduino Uno R4 WiFi, con conector USB tipo C, antena WiFi y matriz de LEDs">
-        <rect x="20" y="20" width="380" height="180" rx="8" class="ill-board"/>
-        <rect x="40" y="14" width="56" height="32" rx="6" class="ill-usb-c"/>
-        <text x="68" y="34" text-anchor="middle" class="ill-usb-label">USB-C</text>
-        <rect x="140" y="70" width="130" height="60" rx="3" class="ill-chip"/>
-        <text x="205" y="98" text-anchor="middle" class="ill-chip-label">RA4M1</text>
-        <text x="205" y="114" text-anchor="middle" class="ill-chip-label-sm">48 MHz</text>
-        <path d="M355 45 q10 -18 22 -18" class="ill-antenna"/>
-        <circle cx="377" cy="27" r="3" class="ill-antenna-dot"/>
-        <text x="365" y="60" text-anchor="middle" class="ill-caption">WiFi</text>
-        <g class="ill-matrix">
-          <circle cx="320" cy="150" r="2.2"/><circle cx="330" cy="150" r="2.2"/><circle cx="340" cy="150" r="2.2"/><circle cx="350" cy="150" r="2.2"/>
-          <circle cx="320" cy="160" r="2.2"/><circle cx="330" cy="160" r="2.2"/><circle cx="340" cy="160" r="2.2"/><circle cx="350" cy="160" r="2.2"/>
-          <circle cx="320" cy="170" r="2.2"/><circle cx="330" cy="170" r="2.2"/><circle cx="340" cy="170" r="2.2"/><circle cx="350" cy="170" r="2.2"/>
-        </g>
-        <text x="335" y="188" text-anchor="middle" class="ill-caption">Matriz 12×8</text>
-      </svg>
+      <img class="board-photo" src="images/board-r4-wifi.png" alt="Foto real de la placa Arduino Uno R4 WiFi, vista desde arriba">
       <div class="board-grid">
         <div class="board-facts">
           <dl>
@@ -180,42 +150,62 @@
             <span class="practice-index">Práctica 1</span>
           </div>
           <h3>Conexión sencilla de LEDs</h3>
-          <p class="card-summary">Monta tu primer circuito: un LED que se enciende y se apaga desde el código. Es la base de todo lo que viene después.</p>
+          <p class="card-summary">Monta tu primer circuito: dos LEDs que se turnan para encenderse desde el código. Es la base de todo lo que viene después.</p>
+
+          <details class="hint-box image-hint">
+            <summary>Pista: ver imágenes de conexiones y bloques</summary>
+            <div class="ref-images">
+              <figure>
+                <img src="images/practica1-conexiones.png" alt="Esquema de conexiones de la Práctica 1: dos LEDs con Arduino Uno" loading="lazy">
+                <figcaption>Esquema de conexiones</figcaption>
+              </figure>
+              <figure>
+                <img src="images/practica1-bloques.png" alt="Código de bloques de la Práctica 1: control alterno de los pines 13 y 12" loading="lazy">
+                <figcaption>La misma lógica, en bloques</figcaption>
+              </figure>
+            </div>
+          </details>
 
           <h4>Qué vas a aprender</h4>
-          <p>Cómo cerrar un circuito con la placa, qué hace una resistencia limitadora y cómo controlar un pin digital con <code>digitalWrite()</code>.</p>
+          <p>Cómo cerrar un circuito con la placa, qué hace una resistencia limitadora y cómo controlar dos pines digitales con <code>digitalWrite()</code> para que se turnen.</p>
 
           <h4>Material</h4>
           <ul>
             <li>1 placa Arduino Uno (R3 o R4 WiFi)</li>
-            <li>1 LED</li>
-            <li>1 resistencia de 220 Ω</li>
-            <li>2 cables de conexión</li>
+            <li>1 LED rojo y 1 LED verde</li>
+            <li>2 resistencias de 220 Ω</li>
+            <li>Cables de conexión</li>
             <li>1 protoboard</li>
           </ul>
 
           <h4>Montaje</h4>
           <ol>
-            <li>Coloca el LED en la protoboard. Fíjate en la pata más larga (ánodo, +) y la más corta (cátodo, −).</li>
-            <li>Conecta el pin digital <strong>13</strong> a un extremo de la resistencia de 220 Ω.</li>
-            <li>Conecta el otro extremo de la resistencia al ánodo del LED.</li>
-            <li>Conecta el cátodo del LED a un pin <strong>GND</strong> de la placa.</li>
+            <li>Coloca los dos LEDs en la protoboard. Fíjate en la pata más larga (ánodo, +) y la más corta (cátodo, −) de cada uno.</li>
+            <li>Conecta el pin digital <strong>13</strong> a una resistencia de 220 Ω, y esta al ánodo del LED rojo.</li>
+            <li>Conecta el pin digital <strong>12</strong> a otra resistencia de 220 Ω, y esta al ánodo del LED verde.</li>
+            <li>Conecta los cátodos de ambos LEDs a <strong>GND</strong>.</li>
           </ol>
 
           <h4>Código</h4>
-          <pre><code>void setup() {
-  pinMode(13, OUTPUT);
+          <pre><code>const int ledRojo = 13;
+const int ledVerde = 12;
+
+void setup() {
+  pinMode(ledRojo, OUTPUT);
+  pinMode(ledVerde, OUTPUT);
 }
 
 void loop() {
-  digitalWrite(13, HIGH);  // enciende el LED
-  delay(1000);              // espera 1 segundo
-  digitalWrite(13, LOW);   // apaga el LED
+  digitalWrite(ledRojo, HIGH);
+  digitalWrite(ledVerde, LOW);
+  delay(1000);
+  digitalWrite(ledRojo, LOW);
+  digitalWrite(ledVerde, HIGH);
   delay(1000);
 }</code></pre>
 
           <h4>Para comprobar que lo entiendes</h4>
-          <p>Cambia los valores de <code>delay()</code> y observa qué ocurre. ¿Qué pasa si usas dos valores distintos? ¿Sabrías hacer que el LED parpadee muy deprisa?</p>
+          <p>Cambia los valores de <code>delay()</code> y observa qué ocurre. ¿Qué pasa si usas dos valores distintos para cada LED? ¿Sabrías hacer que los dos parpadeen muy deprisa?</p>
 
           <button class="mark-done" data-step="1">Marcar como completada → siguiente</button>
         </div>
@@ -261,16 +251,19 @@ void loop() {
           <h3>LED controlado por un pulsador</h3>
           <p class="card-summary">Añade una entrada a tu circuito: un pulsador que decide, con una condición en el código, si el LED está encendido o apagado.</p>
 
-          <div class="ref-images">
-            <figure>
-              <img src="images/practica2-conexiones.png" alt="Esquema de conexiones de la Práctica 2: pulsador y LED con Arduino Uno" loading="lazy">
-              <figcaption>Esquema de conexiones</figcaption>
-            </figure>
-            <figure>
-              <img src="images/practica2-bloques.png" alt="Código de bloques de la Práctica 2: lectura del pin 8 y control del pin 10" loading="lazy">
-              <figcaption>La misma lógica, en bloques</figcaption>
-            </figure>
-          </div>
+          <details class="hint-box image-hint">
+            <summary>Pista: ver imágenes de conexiones y bloques</summary>
+            <div class="ref-images">
+              <figure>
+                <img src="images/practica2-conexiones.png" alt="Esquema de conexiones de la Práctica 2: pulsador y LED con Arduino Uno" loading="lazy">
+                <figcaption>Esquema de conexiones</figcaption>
+              </figure>
+              <figure>
+                <img src="images/practica2-bloques.png" alt="Código de bloques de la Práctica 2: lectura del pin 8 y control del pin 10" loading="lazy">
+                <figcaption>La misma lógica, en bloques</figcaption>
+              </figure>
+            </div>
+          </details>
 
           <h4>Qué vas a aprender</h4>
           <p>A leer una entrada digital con <code>digitalRead()</code> y a usar una estructura <code>if / else</code> para que el circuito reaccione a lo que ocurre fuera de la placa.</p>
@@ -363,16 +356,19 @@ void loop() {
           <h3>Sensor de luz (LDR) y un LED</h3>
           <p class="card-summary">Sustituye el pulsador por un sensor: una fotorresistencia (LDR) que decide, según la luz ambiente, si el LED debe encenderse.</p>
 
-          <div class="ref-images">
-            <figure>
-              <img src="images/practica3-conexiones.png" alt="Esquema de conexiones de la Práctica 3: LDR y LED con Arduino Uno" loading="lazy">
-              <figcaption>Esquema de conexiones</figcaption>
-            </figure>
-            <figure>
-              <img src="images/practica3-bloques.png" alt="Código de bloques de la Práctica 3: lectura del LDR en A0 y control del pin 13" loading="lazy">
-              <figcaption>La misma lógica, en bloques</figcaption>
-            </figure>
-          </div>
+          <details class="hint-box image-hint">
+            <summary>Pista: ver imágenes de conexiones y bloques</summary>
+            <div class="ref-images">
+              <figure>
+                <img src="images/practica3-conexiones.png" alt="Esquema de conexiones de la Práctica 3: LDR y LED con Arduino Uno" loading="lazy">
+                <figcaption>Esquema de conexiones</figcaption>
+              </figure>
+              <figure>
+                <img src="images/practica3-bloques.png" alt="Código de bloques de la Práctica 3: lectura del LDR en A0 y control del pin 13" loading="lazy">
+                <figcaption>La misma lógica, en bloques</figcaption>
+              </figure>
+            </div>
+          </details>
 
           <h4>Qué vas a aprender</h4>
           <p>A leer una entrada <strong>analógica</strong> con <code>analogRead()</code> (valores de 0 a 1023, no solo 0 o 1) y a comparar esa lectura con un umbral para tomar una decisión.</p>
@@ -461,16 +457,19 @@ void loop() {
           <h3>Servomotor</h3>
           <p class="card-summary">Deja de encender luces y empieza a mover algo: controla el ángulo de un servomotor con la librería <code>Servo</code>.</p>
 
-          <div class="ref-images">
-            <figure>
-              <img src="images/practica4-conexiones.png" alt="Esquema de conexiones de la Práctica 4: servomotor con Arduino Uno" loading="lazy">
-              <figcaption>Esquema de conexiones</figcaption>
-            </figure>
-            <figure>
-              <img src="images/practica4-bloques.png" alt="Código de bloques de la Práctica 4: giro del servo en el pin 8" loading="lazy">
-              <figcaption>La misma lógica, en bloques</figcaption>
-            </figure>
-          </div>
+          <details class="hint-box image-hint">
+            <summary>Pista: ver imágenes de conexiones y bloques</summary>
+            <div class="ref-images">
+              <figure>
+                <img src="images/practica4-conexiones.png" alt="Esquema de conexiones de la Práctica 4: servomotor con Arduino Uno" loading="lazy">
+                <figcaption>Esquema de conexiones</figcaption>
+              </figure>
+              <figure>
+                <img src="images/practica4-bloques.png" alt="Código de bloques de la Práctica 4: giro del servo en el pin 8" loading="lazy">
+                <figcaption>La misma lógica, en bloques</figcaption>
+              </figure>
+            </div>
+          </details>
 
           <h4>Qué vas a aprender</h4>
           <p>A usar una <strong>librería</strong> (código que ya han escrito otros para resolver un problema común) y a mover un servomotor a un ángulo concreto con <code>write()</code>.</p>
@@ -552,16 +551,19 @@ void loop() {
           <h3>Sensor de temperatura y monitor serie</h3>
           <p class="card-summary">Lee un sensor de temperatura, conviértelo a grados y observa los datos en tiempo real desde el ordenador con el monitor serie.</p>
 
-          <div class="ref-images">
-            <figure>
-              <img src="images/practica5-conexiones.png" alt="Esquema de conexiones de la Práctica 5: sensor de temperatura y LED con Arduino Uno" loading="lazy">
-              <figcaption>Esquema de conexiones</figcaption>
-            </figure>
-            <figure>
-              <img src="images/practica5-bloques.png" alt="Código de bloques de la Práctica 5: lectura del sensor de temperatura en A0 y control del pin 7" loading="lazy">
-              <figcaption>La misma lógica, en bloques</figcaption>
-            </figure>
-          </div>
+          <details class="hint-box image-hint">
+            <summary>Pista: ver imágenes de conexiones y bloques</summary>
+            <div class="ref-images">
+              <figure>
+                <img src="images/practica5-conexiones.png" alt="Esquema de conexiones de la Práctica 5: sensor de temperatura y LED con Arduino Uno" loading="lazy">
+                <figcaption>Esquema de conexiones</figcaption>
+              </figure>
+              <figure>
+                <img src="images/practica5-bloques.png" alt="Código de bloques de la Práctica 5: lectura del sensor de temperatura en A0 y control del pin 7" loading="lazy">
+                <figcaption>La misma lógica, en bloques</figcaption>
+              </figure>
+            </div>
+          </details>
 
           <h4>Qué vas a aprender</h4>
           <p>A convertir una lectura analógica en una magnitud con sentido (grados centígrados) y a usar <code>Serial.print()</code> para ver esos datos en el ordenador mientras el programa se ejecuta.</p>
@@ -655,16 +657,19 @@ void loop() {
           <h3>Sensor de ultrasonidos y dos LEDs</h3>
           <p class="card-summary">Mide una distancia con un sensor de ultrasonidos de un solo pin de señal (tipo PING))) y enciende un LED distinto según si algo está cerca o lejos.</p>
 
-          <div class="ref-images">
-            <figure>
-              <img src="images/practica6-conexiones.png" alt="Esquema de conexiones de la Práctica 6: sensor de ultrasonidos y dos LEDs con Arduino Uno" loading="lazy">
-              <figcaption>Esquema de conexiones</figcaption>
-            </figure>
-            <figure>
-              <img src="images/practica6-bloques.png" alt="Código de bloques de la Práctica 6: lectura del sensor de ultrasonidos y control de los pines 2 y 7" loading="lazy">
-              <figcaption>La misma lógica, en bloques</figcaption>
-            </figure>
-          </div>
+          <details class="hint-box image-hint">
+            <summary>Pista: ver imágenes de conexiones y bloques</summary>
+            <div class="ref-images">
+              <figure>
+                <img src="images/practica6-conexiones.png" alt="Esquema de conexiones de la Práctica 6: sensor de ultrasonidos y dos LEDs con Arduino Uno" loading="lazy">
+                <figcaption>Esquema de conexiones</figcaption>
+              </figure>
+              <figure>
+                <img src="images/practica6-bloques.png" alt="Código de bloques de la Práctica 6: lectura del sensor de ultrasonidos y control de los pines 2 y 7" loading="lazy">
+                <figcaption>La misma lógica, en bloques</figcaption>
+              </figure>
+            </div>
+          </details>
 
           <h4>Qué vas a aprender</h4>
           <p>Cómo funciona un sensor de ultrasonidos por debajo: envía un pulso, cronometra cuánto tarda en volver el eco con <code>pulseIn()</code> y, a partir de ese tiempo, calcula una distancia.</p>
